@@ -23,6 +23,7 @@
     "url": "https://github.com/401-advanced-javascript-raghad/todo/issues"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1",

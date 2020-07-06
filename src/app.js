@@ -1,6 +1,6 @@
 import React from 'react';
-import ToDo from './components/todo/todo.js';
-import './App.sass';
+import ToDo from './components/todo/todo-connected';
+// import './App.sass';
 
 function App(){
     return (

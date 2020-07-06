@@ -1,57 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
+import useAjax from '../hooks/useAjax'
 
-const toDoApi = "https://github.com/401-advanced-javascript-raghad/todo";
 const ToDo = () => {
 
-  const [list, setList] = useState([]);
-
-  const _addItem = (item) => {
-    item.due = new Date();
-    fetch(toDoApi, {
-      method: 'post',
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(item)
-    })
-      .then(response => response.json())
-      .then(items => {
-        setList([...list, items])
-      })
-      .catch(console.error);
-  };
-
-  const _toggleStatus = id => {
-    let item = list.filter(i => i._id === id)[0] || {};
-    if (item._id) {
-      item.complete = !item.complete;
-      let URL = `${toDoApi}/${id}`;
-      fetch(URL, {
-        method: 'put',
-        mode: 'cors',
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(item)
-      })
-        .then(response => response.json())
-        .then(items => {
-          setList(list.map(listItem => listItem._id === item._id ? items : listItem));
-        })
-        .catch(console.error);
-    }
-  };
-
-  const _getItems = () => {
-    fetch(toDoApi, {
-      method: 'get',
-      mode: 'cors',
-    })
-      .then(data => data.json())
-      .then(data => setList(data.results))
-      .catch(console.error);
-  };
+  const [_addItem, _toggleStatus, _getItems, _deleteItem, list] = useAjax();
 
   useEffect(_getItems, []);
 
@@ -59,7 +13,7 @@ const ToDo = () => {
     <>
       <header>
         <h2>
-          There are {list.filter(item => !item.complete).length} Items To Complete
+          There are {list.filter(item => item.complete === 'pending').length} Items To Complete
         </h2>
       </header>
 
@@ -73,6 +27,8 @@ const ToDo = () => {
           <TodoList
             list={list}
             handleComplete={_toggleStatus}
+            handleDelete={_deleteItem}
+
           />
         </div>
       </section>

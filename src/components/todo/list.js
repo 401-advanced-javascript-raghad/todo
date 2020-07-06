@@ -1,31 +1,28 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-const TodoList = (props) => {
 
-  const _getItem = (props) => {
-
-    return props.list.map(item => {
-      let state_item;
-      !item.complete ? state_item = 'secondary' : state_item = 'danger';
-      return <ListGroup.Item as="li"
-        className={`complete-${item.complete.toString()}`}
-        key={item._id} onClick={() => props.handleComplete(item._id)}
-        variant={`${state_item}`}
-      >
-        {item.text}
-
-      </ListGroup.Item>
-    })
-  }
+function TodoList({ list, handleComplete, handleDelete }) {
   return (
-    <ListGroup>
-      {_getItem(props)}
+    <ListGroup className="ul">
+      {
+        list.map(item => (
+          <ListGroup.Item
+            className={`complete-${item.complete} li`}
+            key={item._id}
+          >
+            <span onClick={() => handleComplete(item._id)}>
+              {item.text} ~~ {item.complete} ~~ {item.assignee}
 
-    </ListGroup>
+            </span>
 
+            <button onClick={() => handleDelete(item._id)}> x </button>
+          </ListGroup.Item>
+        ))
+      }
+    </ListGroup >
   );
 }
-
 
 export default TodoList;
