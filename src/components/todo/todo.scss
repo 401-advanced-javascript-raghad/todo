@@ -4,14 +4,46 @@ body, html {
     padding:0;
     width: 100%;
 }
-
-.container{
+.container {
     margin-top: 3%;
 }
-h2{
-    background-color: #353A40;
-    padding: 1%;
+h2 {
+    background-color: #001f3f;
     color: white;
+    padding: 1%;
+}
+.complete-complete {
+    background: #FF4136;
+    border: 2px solid #FF4136;
+    color: white;
+    border-radius: 38%;
+    cursor: pointer;
+}
+.complete-pending {
+    background: #3D9970;
+    border: 2px solid #3D9970;
+    color: white;
+    border-radius: 38%;
+    cursor: pointer;
+}
+.firstRow {
+    border-bottom: 1px solid #cecccc;
+    padding: 1%;
+}
+.text-end {
+    text-align: end;
+}
+.form {
+    padding: 1.5%;
+    margin-right: 8%;
+    border: 1px solid darkgray;
+    border-radius: 2.5%;
+}
+.complete-complete-hide {
+   display: block;
+}
+.complete-complete-show {
+    display: none;
 }
 .todo-details {
     display:flex;
@@ -30,16 +62,13 @@ h2{
     }
 
 }
-
 .todo {
-
     display:flex;
     flex-direction:row;
     justify-content: flex-start;
     margin: 2em;
 
     form {
-
         display:flex;
         flex-direction:column;
         margin-right: 2em;
@@ -58,20 +87,11 @@ h2{
 
         .li {
 
-            align-items: center;
-            display:flex;
-            flex-direction:row;
-            font-size: .75em;
-            margin: .75em .5em;
+            box-shadow: 0px 2px 12px #888888;
+            padding-top: 1%;
 
             &.complete-complete {
-              span {
-                background: pink;
-                text-decoration:line-through;
-                &:hover {
-                   background: seagreen;
-                }
-              }
+                    background: red;
             }
 
             span {
@@ -100,4 +120,17 @@ h2{
         }
     }
 
+}
+a:not([href]) {
+    color: inherit;
+    text-decoration: none;
+    margin: 12px;
+    cursor: pointer;
+}
+button:not(:disabled) {
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+    border-radius: 5%;
+    margin-left: 6%;
 }

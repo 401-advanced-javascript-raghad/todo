@@ -2,16 +2,16 @@ import React from 'react';
 
 export const ToggleContext = React.createContext();
 
-class ToggleHideShow extends React.Component {
-
+class ToggleStatusHideShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       status: 'hide',
-      toggleStause: this.toggleStause,
+      changeStause: this.changeStause,
     };
   }
-  toggleStause=() => this.setState({ status: this.state.status === 'show' ? 'hide' : 'show' });
+
+  changeStause = () => this.setState({ status: this.state.status === 'show' ? 'hide' : 'show' });
 
   render() {
     return (
@@ -22,4 +22,4 @@ class ToggleHideShow extends React.Component {
   }
 }
 
-export default ToggleHideShow;
+export default ToggleStatusHideShow;
