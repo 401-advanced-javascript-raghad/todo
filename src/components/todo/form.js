@@ -7,7 +7,7 @@ import useForm from '../hooks/form_hooks';
 function TodoForm(props) {
   const [handleSubmit, handleChange, item] = useForm(handleForm);
 
-  function handleForm(item){
+  function handleForm(item) {
     props.handleSubmit(item);
   }
 
@@ -25,11 +25,13 @@ function TodoForm(props) {
           <Form.Label>Assigned To</Form.Label>
           <Form.Control type="text" name="assignee" placeholder="Assigned To" onChange={handleChange} />
         </Form.Group>
+
         <Form.Group controlId="formBasicRange">
           <Form.Label>Difficutly Rating</Form.Label>
           <Form.Control defaultValue="1" type="range" min="1" max="10" name="difficulty" onChange={handleChange} />
         </Form.Group>
-        <Button variant="primary" type="submit" style={{ width: '20%' }}>
+        
+        <Button variant="primary" type="submit" style={{ width: '25%' }}>
           Add Item
   </Button>
       </Form>
